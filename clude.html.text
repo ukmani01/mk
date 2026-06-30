@@ -12,7 +12,7 @@
 
     <style>
         /* ============================================================
-           APPLE-LEVEL MINIMAL — Final refinements
+           APPLE-LEVEL MINIMAL — All styles
            ============================================================ */
 
         :root {
@@ -26,20 +26,8 @@
             --accent-hover: #0077ed;
             --radius: 8px;
             --radius-lg: 12px;
-            --radius-xl: 16px;
             --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.10);
-            --instagram-start: #f09433;
-            --instagram-mid: #e6683c;
-            --instagram-end: #dc2743;
-            --linkedin: #0a66c2;
-            --email-blue: #0072c6;
-            --github-dark: #24292e;
-            --wave-color: #0072c6;
         }
 
         * {
@@ -93,111 +81,72 @@
         .btn-primary {
             background: var(--text-primary);
             color: #fff;
-            padding: 10px 26px;
+            padding: 10px 24px;
             border-radius: 980px;
             font-weight: 500;
             font-size: 0.85rem;
             border: none;
             cursor: pointer;
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            transition: background var(--transition), transform var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 6px;
             font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
         }
         .btn-primary:hover {
             background: #2d2d2f;
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
+            transform: scale(0.98);
         }
         .btn-primary:active {
-            transform: scale(0.94);
-            box-shadow: var(--shadow-sm);
+            transform: scale(0.96);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            padding: 10px 26px;
+            padding: 10px 24px;
             border-radius: 980px;
             font-weight: 500;
             font-size: 0.85rem;
             border: 1px solid var(--border);
             cursor: pointer;
-            transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+            transition: border-color var(--transition), background var(--transition), transform var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 6px;
             font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
         }
         .btn-secondary:hover {
             border-color: var(--text-primary);
             background: rgba(0, 0, 0, 0.02);
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
+            transform: scale(0.98);
         }
         .btn-secondary:active {
-            transform: scale(0.94);
-            box-shadow: var(--shadow-sm);
+            transform: scale(0.96);
         }
 
-        .btn-cta {
-            background: var(--text-primary);
-            color: #fff;
-            padding: 14px 36px;
-            border-radius: 980px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
+        /* ----- Page Transition ----- */
+        .page-transition {
+            width: 100%;
+            min-height: 100vh;
         }
-        .btn-cta:hover {
-            background: #2d2d2f;
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
+        .page-transition .page-content {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: pageFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        .btn-cta:active {
-            transform: scale(0.94);
-            box-shadow: var(--shadow-sm);
+        .page-transition .page-content.exit {
+            opacity: 0;
+            transform: translateY(-6px);
+            animation: none;
+            transition: opacity 0.35s ease, transform 0.35s ease;
         }
 
-        .btn-cta-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            padding: 14px 36px;
-            border-radius: 980px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
-        }
-        .btn-cta-secondary:hover {
-            border-color: var(--text-primary);
-            background: rgba(0, 0, 0, 0.02);
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
-        }
-        .btn-cta-secondary:active {
-            transform: scale(0.94);
-            box-shadow: var(--shadow-sm);
+        @keyframes pageFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ============================================================
@@ -220,39 +169,15 @@
             height: 60px;
         }
 
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-        .logo-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #1d1d1f;
-            color: #fff;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: -0.02em;
-            transition: transform var(--transition), box-shadow var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-        .logo-badge:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-md);
-        }
-        .logo-text {
+        .logo {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: -0.03em;
             color: var(--text-primary);
             transition: opacity var(--transition);
+            cursor: pointer;
         }
-        .logo-text:hover {
+        .logo:hover {
             opacity: 0.65;
         }
 
@@ -288,51 +213,36 @@
             color: var(--text-primary);
         }
 
+        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4.5px;
             cursor: pointer;
             background: none;
             border: none;
-            padding: 8px;
+            padding: 6px;
             z-index: 1001;
-            transition: transform var(--transition);
-        }
-        .hamburger:hover {
-            transform: scale(1.05);
         }
         .hamburger span {
             display: block;
-            width: 22px;
-            height: 2px;
+            width: 20px;
+            height: 1.5px;
             background: var(--text-primary);
             transition: all var(--transition);
             border-radius: 2px;
         }
         .hamburger.open span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(4px, 4.5px);
         }
         .hamburger.open span:nth-child(2) {
             opacity: 0;
-            transform: scaleX(0);
         }
         .hamburger.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(4px, -4.5px);
         }
 
-        @media (max-width: 640px) {
-            .hamburger {
-                display: flex;
-            }
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* ============================================================
-           MOBILE OVERLAY & NAV
-           ============================================================ */
+        /* Mobile Overlay */
         .mobile-overlay {
             position: fixed;
             inset: 0;
@@ -342,35 +252,11 @@
             -webkit-backdrop-filter: blur(14px);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            overflow: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
         }
         .mobile-overlay.open {
             opacity: 1;
             visibility: visible;
-        }
-
-        .mobile-overlay::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: repeating-linear-gradient(90deg, 
-                rgba(0,114,198,0.15) 0%, 
-                rgba(0,114,198,0.05) 25%, 
-                rgba(0,114,198,0.15) 50%, 
-                rgba(0,114,198,0.05) 75%, 
-                rgba(0,114,198,0.15) 100%);
-            background-size: 200% 100%;
-            animation: waveMove 1.5s linear infinite;
-            pointer-events: none;
-            transform: translateY(70%);
-        }
-        @keyframes waveMove {
-            0% { transform: translateY(70%) translateX(0); }
-            100% { transform: translateY(70%) translateX(-50%); }
         }
 
         .mobile-nav {
@@ -378,18 +264,17 @@
             top: 0;
             left: 0;
             width: 80%;
-            max-width: 340px;
+            max-width: 300px;
             height: 100%;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 80px 32px 32px;
+            padding: 72px 32px 32px;
             transform: translateX(-100%);
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             border-right: 0.5px solid var(--border-light);
             overflow-y: auto;
-            box-shadow: var(--shadow-lg);
         }
         .mobile-nav.open {
             transform: translateX(0);
@@ -398,19 +283,15 @@
             display: block;
             font-size: 1.4rem;
             font-weight: 500;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 0.5px solid var(--border-light);
-            transition: color var(--transition), transform var(--transition), opacity 0.4s ease;
+            transition: color var(--transition), transform var(--transition);
             cursor: pointer;
             color: var(--text-primary);
-            opacity: 0;
-            transform: translateX(-20px) scale(0.95);
-            animation: paperRevealLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            animation-delay: calc(0.1s * var(--item-index, 0));
         }
         .mobile-nav a:hover {
             color: var(--accent);
-            transform: translateX(4px) scale(1.02);
+            transform: translateX(4px);
         }
         .mobile-nav a:last-child {
             border-bottom: none;
@@ -425,323 +306,23 @@
             cursor: pointer;
             color: var(--text-secondary);
             transition: color var(--transition), transform var(--transition);
-            padding: 4px;
         }
         .mobile-nav .close-btn:hover {
             color: var(--text-primary);
             transform: rotate(90deg);
         }
 
-        @keyframes paperRevealLeft {
-            0% { opacity: 0; transform: translateX(-20px) scale(0.95); }
-            100% { opacity: 1; transform: translateX(0) scale(1); }
-        }
-
-        /* ============================================================
-           CONTACT CARDS — responsive buttons
-           ============================================================ */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            max-width: 960px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .social-card {
-            background: var(--bg);
-            border: 0.8px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 16px 12px 14px;
-            text-align: center;
-            transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-        .social-card:hover {
-            border-color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-card .icon-wrap {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f2f5;
-            transition: background var(--transition);
-            margin-bottom: 2px;
-        }
-        .social-card:hover .icon-wrap {
-            background: #e5e8ec;
-        }
-        .social-card .icon-wrap i {
-            font-size: 1.2rem;
-        }
-
-        .social-card .card-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-tertiary);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 1px;
-        }
-
-        .social-card .card-handle {
-            font-size: 0.8rem;
-            font-weight: 450;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-            word-break: break-word;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 5px 14px;
-            border-radius: 980px;
-            font-weight: 500;
-            font-size: 0.7rem;
-            border: none;
-            cursor: pointer;
-            transition: transform var(--transition), box-shadow var(--transition);
-            font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
-            color: #fff;
-            width: auto;
-            min-width: 80px;
-            max-width: 160px;
-        }
-        .social-btn:hover {
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
-        }
-        .social-btn:active {
-            transform: scale(0.94);
-        }
-
-        .social-btn.btn-email {
-            background: var(--email-blue);
-        }
-        .social-btn.btn-email:hover {
-            background: #005a9e;
-        }
-
-        .social-btn.btn-linkedin {
-            background: var(--text-primary);
-        }
-        .social-btn.btn-linkedin:hover {
-            background: #2d2d2f;
-        }
-
-        .social-btn.btn-instagram {
-            background: linear-gradient(135deg, var(--instagram-start), var(--instagram-mid), var(--instagram-end));
-        }
-        .social-btn.btn-instagram:hover {
-            opacity: 0.9;
-        }
-
-        .social-btn.btn-github {
-            background: var(--github-dark);
-        }
-        .social-btn.btn-github:hover {
-            background: #1a1e22;
-        }
-
-        .icon-email { color: var(--email-blue); }
-        .icon-linkedin { color: var(--text-primary); }
-        .icon-instagram {
-            background: linear-gradient(135deg, var(--instagram-start), var(--instagram-mid), var(--instagram-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .icon-github { color: var(--github-dark); }
-
-        /* Boat track for contact */
-        .boat-track-contact {
-            position: relative;
-            width: 100%;
-            height: 4px;
-            background: transparent;
-            margin: 12px 0 8px;
-            overflow: visible;
-        }
-        .boat-track-contact .boat-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(0,114,198,0.3), rgba(0,114,198,0.6));
-            width: 0%;
-            transition: width 0.05s linear;
-            border-radius: 2px;
-        }
-        .boat-track-contact .boat-icon {
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1rem;
-            color: #0072c6;
-            transition: left 0.05s linear;
-            filter: drop-shadow(0 2px 4px rgba(0,114,198,0.3));
-        }
-        .boat-track-contact .boat-icon i {
-            display: block;
-        }
-
         @media (max-width: 640px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+            .hamburger {
+                display: flex;
             }
-            .social-card {
-                padding: 12px 10px 10px;
-            }
-            .social-card .icon-wrap {
-                width: 34px;
-                height: 34px;
-            }
-            .social-card .icon-wrap i {
-                font-size: 1rem;
-            }
-            .social-btn {
-                font-size: 0.65rem;
-                padding: 4px 10px;
-                width: 100%;
-                max-width: 100%;
-                min-width: unset;
-            }
-            .social-card .card-handle {
-                font-size: 0.7rem;
-            }
-            .boat-track-contact .boat-icon {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .nav-links {
+                display: none;
             }
         }
 
         /* ============================================================
-           CTA SECTION
-           ============================================================ */
-        .cta-section {
-            margin-top: 48px;
-            padding: 40px 32px 36px;
-            background: #f8f8fa;
-            border-radius: var(--radius-xl);
-            text-align: center;
-            border: 0.5px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow var(--transition), border-color var(--transition);
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-section:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--border);
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 6px;
-            color: var(--text-primary);
-        }
-        .cta-section .cta-message {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 560px;
-            margin: 0 auto 24px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-        .cta-actions {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn-email-cta {
-            background: var(--email-blue);
-            color: #fff;
-            padding: 14px 36px;
-            border-radius: 980px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-            letter-spacing: -0.01em;
-        }
-        .btn-email-cta:hover {
-            background: #005a9e;
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
-        }
-        .btn-email-cta:active {
-            transform: scale(0.94);
-            box-shadow: var(--shadow-sm);
-        }
-
-        @media (max-width: 640px) {
-            .cta-section {
-                padding: 28px 18px 24px;
-                margin-top: 32px;
-            }
-            .cta-section h2 {
-                font-size: 1.5rem;
-            }
-            .cta-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cta-actions .btn-email-cta,
-            .cta-actions .btn-cta-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .footer {
-            margin-top: 60px;
-            padding: 24px 0 20px;
-            border-top: 0.5px solid var(--border-light);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.02em;
-        }
-
-        /* ============================================================
-           HOME — hero with fly-away scroll animation
+           HOME — centered editorial card
            ============================================================ */
         .home {
             min-height: 100vh;
@@ -749,41 +330,37 @@
             align-items: center;
             justify-content: center;
             background: var(--bg);
-            padding: 28px 20px 32px;
-            position: relative;
-            will-change: transform;
+            padding: 40px 20px;
         }
 
         .hero-container {
             width: 100%;
             max-width: 640px;
             margin: 0 auto;
-            will-change: transform, opacity;
         }
 
         .hero-card {
             background: #ffffff;
             border: 1px solid var(--border-light);
             border-radius: 12px;
-            padding: 28px 28px 26px;
+            padding: 32px 28px;
             box-shadow: none;
-            transition: border-color var(--transition), box-shadow var(--transition);
-            will-change: transform, opacity;
+            transition: border-color var(--transition);
         }
         .hero-card:hover {
             border-color: var(--border);
-            box-shadow: var(--shadow-sm);
         }
 
+        /* ---- Image ---- */
         .hero-image-wrapper {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .tilt-wrapper {
-            width: 154px;
-            height: 154px;
+            width: 140px;
+            height: 140px;
             transition: transform 0.08s ease;
             will-change: transform;
         }
@@ -798,6 +375,7 @@
             background: #f5f5f7;
         }
 
+        /* ---- Content ---- */
         .hero-content {
             text-align: center;
         }
@@ -808,7 +386,7 @@
             font-weight: 500;
             color: var(--text-secondary);
             letter-spacing: 0.04em;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             border: 0.5px solid var(--border-light);
             padding: 3px 14px;
             border-radius: 20px;
@@ -821,7 +399,7 @@
             letter-spacing: -0.035em;
             line-height: 1.1;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .hero-title .dot {
             color: var(--accent);
@@ -831,7 +409,7 @@
             font-size: 1rem;
             color: var(--text-secondary);
             max-width: 480px;
-            margin: 0 auto 18px;
+            margin: 0 auto 22px;
             line-height: 1.6;
             font-weight: 400;
         }
@@ -840,11 +418,12 @@
             font-weight: 500;
         }
 
+        /* ---- Stats ---- */
         .hero-stats {
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin-bottom: 22px;
+            margin-bottom: 26px;
         }
         .hero-stats div {
             display: flex;
@@ -860,14 +439,16 @@
             letter-spacing: -0.02em;
         }
 
+        /* ---- Buttons ---- */
         .hero-actions {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
+        /* ---- Social ---- */
         .hero-social {
             display: flex;
             justify-content: center;
@@ -884,13 +465,15 @@
             color: var(--text-primary);
         }
 
+        /* ---- Mobile: reduce top gap ---- */
         @media (max-width: 640px) {
             .home {
-                padding: 20px 16px 20px;
-                min-height: 80vh;
+                padding: 2px 20px 40px;
+                /* reduced top gap from 12px → 2px */
             }
             .hero-card {
-                padding: 18px 16px 16px;
+                padding: 20px 18px;
+                /* slightly reduced */
             }
             .hero-title {
                 font-size: 2rem;
@@ -902,21 +485,20 @@
                 font-size: 1.2rem;
             }
             .tilt-wrapper {
-                width: 121px;
-                height: 121px;
+                width: 110px;
+                height: 110px;
             }
             .hero-image-wrapper {
-                margin-bottom: 14px;
+                margin-bottom: 16px;
             }
         }
 
         @media (max-width: 480px) {
             .home {
-                padding: 16px 12px 16px;
-                min-height: 70vh;
+                padding: 0 14px 32px;
             }
             .hero-card {
-                padding: 14px 12px 12px;
+                padding: 16px 14px;
             }
             .hero-title {
                 font-size: 1.6rem;
@@ -937,290 +519,12 @@
                 justify-content: center;
             }
             .hero-image-wrapper {
-                margin-bottom: 10px;
-            }
-            .tilt-wrapper {
-                width: 100px;
-                height: 100px;
+                margin-bottom: 12px;
             }
         }
 
         /* ============================================================
-           HOME — "What I Do" section (scroll reveal)
-           ============================================================ */
-        .what-i-do {
-            padding: 40px 0 60px;
-            background: var(--bg);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .what-i-do.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .what-i-do .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .what-i-do-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .what-i-do-card {
-            background: #fff;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 24px 22px;
-            transition: border-color var(--transition), box-shadow var(--transition);
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color var(--transition), box-shadow var(--transition);
-        }
-        .what-i-do-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .what-i-do-card:hover {
-            border-color: var(--text-primary);
-            box-shadow: var(--shadow-md);
-        }
-        .what-i-do-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
-        }
-        .what-i-do-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        .what-i-do-card .btn-small {
-            background: var(--text-primary);
-            color: #fff;
-            padding: 8px 24px;
-            border-radius: 980px;
-            font-weight: 500;
-            font-size: 0.8rem;
-            border: none;
-            cursor: pointer;
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font);
-            box-shadow: var(--shadow-sm);
-        }
-        .what-i-do-card .btn-small:hover {
-            background: #2d2d2f;
-            transform: scale(0.97);
-            box-shadow: var(--shadow-md);
-        }
-        .what-i-do-card .btn-small:active {
-            transform: scale(0.94);
-        }
-
-        @media (max-width: 640px) {
-            .what-i-do-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .what-i-do {
-                padding: 20px 0 40px;
-            }
-            .what-i-do .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 18px;
-            }
-            .what-i-do-card {
-                padding: 18px 16px;
-            }
-            .what-i-do-card h3 {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* ============================================================
-           HOME — Work Preview (scroll reveal)
-           ============================================================ */
-        .work-preview {
-            padding: 40px 0 60px;
-            background: var(--bg);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .work-preview.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .work-preview .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .work-preview .section-sub {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 28px;
-        }
-
-        .work-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        .work-preview-card {
-            background: #fff;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 20px 22px;
-            transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-            box-shadow: var(--shadow-sm);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color var(--transition), box-shadow var(--transition);
-        }
-        .work-preview-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .work-preview-card:hover {
-            border-color: var(--text-primary);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-        }
-        .work-preview-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 2px;
-        }
-        .work-preview-card .work-category {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-        .work-preview-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-        .work-preview-card .work-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-bottom: 12px;
-        }
-        .work-preview-card .work-tech span {
-            background: #f5f5f7;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.6rem;
-            font-weight: 450;
-            color: var(--text-secondary);
-        }
-
-        @media (max-width: 640px) {
-            .work-preview-grid {
-                grid-template-columns: 1fr;
-            }
-            .work-preview {
-                padding: 20px 0 40px;
-            }
-            .work-preview .section-title {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* ============================================================
-           HOME — About Preview (scroll reveal)
-           ============================================================ */
-        .about-preview {
-            padding: 40px 0 60px;
-            background: #fffefb;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-            background-size: 180px 180px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .about-preview.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-preview .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .about-preview .section-sub {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 24px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .about-preview-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .about-preview-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .about-preview-content p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-        .about-preview-content .btn-about {
-            display: inline-block;
-            margin-top: 8px;
-        }
-
-        @media (max-width: 640px) {
-            .about-preview {
-                padding: 20px 0 40px;
-            }
-            .about-preview .section-title {
-                font-size: 1.4rem;
-            }
-            .about-preview-content p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* ============================================================
-           PROJECTS (MyApp) — keep existing
+           PROJECTS (MyApp)
            ============================================================ */
         .projects-page {
             padding: 48px 0 72px;
@@ -1229,7 +533,7 @@
         }
 
         .page-header {
-            margin-bottom: 36px;
+            margin-bottom: 40px;
             text-align: center;
         }
         .page-header h1 {
@@ -1237,7 +541,7 @@
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .page-header p {
             color: var(--text-secondary);
@@ -1245,25 +549,26 @@
             font-weight: 400;
         }
 
+        /* Featured Grid */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
-            margin-bottom: 52px;
+            margin-bottom: 56px;
         }
 
+        /* ——— Apple-style Card ——— */
         .project-card {
             background: var(--bg);
             border: 1.2px solid var(--text-primary);
             border-radius: var(--radius);
             overflow: hidden;
-            transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), border-color var(--transition);
+            box-shadow: none;
         }
         .project-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             border-color: var(--accent);
-            box-shadow: var(--shadow-hover);
         }
 
         .card-image {
@@ -1297,7 +602,7 @@
         }
 
         .card-body {
-            padding: 18px 20px 20px;
+            padding: 20px 22px 22px;
         }
         .card-body h3 {
             font-size: 1.1rem;
@@ -1309,13 +614,13 @@
         .card-category {
             font-size: 0.7rem;
             color: var(--text-secondary);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 450;
         }
         .card-desc {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             line-height: 1.5;
             font-weight: 400;
         }
@@ -1323,7 +628,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .card-tech span {
             background: #f5f5f7;
@@ -1350,35 +655,30 @@
             font-weight: 500;
             border: none;
             cursor: pointer;
-            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            transition: background var(--transition), transform var(--transition);
             font-family: var(--font);
-            box-shadow: var(--shadow-sm);
         }
         .btn-overview:hover {
             background: #2d2d2f;
             transform: scale(0.97);
-            box-shadow: var(--shadow-md);
-        }
-        .btn-overview:active {
-            transform: scale(0.94);
         }
         .btn-icon {
             color: var(--text-secondary);
             font-size: 0.75rem;
             font-weight: 450;
-            transition: color var(--transition), transform var(--transition);
+            transition: color var(--transition);
             cursor: pointer;
         }
         .btn-icon:hover {
             color: var(--text-primary);
-            transform: scale(1.02);
         }
 
+        /* Other Projects */
         .other-projects h2 {
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
         .other-grid {
             display: grid;
@@ -1390,15 +690,13 @@
             border: 0.8px solid var(--border);
             border-radius: var(--radius);
             padding: 16px 18px;
-            transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+            transition: border-color var(--transition), transform var(--transition);
             display: block;
             cursor: pointer;
-            box-shadow: var(--shadow-sm);
         }
         .other-card:hover {
             border-color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
         }
         .other-card h3 {
             font-size: 0.9rem;
@@ -1413,14 +711,15 @@
         }
 
         /* ============================================================
-           OCEAN OF WORK (existing)
+           OCEAN OF WORK — decorative water / boat / fish background
+           (scoped to #page-myApp only)
            ============================================================ */
         .projects-page {
             position: relative;
             overflow: hidden;
             isolation: isolate;
         }
-        .projects-page>.container {
+        .projects-page > .container {
             position: relative;
             z-index: 1;
         }
@@ -1432,6 +731,8 @@
             overflow: hidden;
             pointer-events: none;
         }
+
+        /* layered wave bands — white/pearl only, never blue */
         .ocean-wave {
             position: absolute;
             left: -10%;
@@ -1456,11 +757,11 @@
             animation: oceanSway 27s ease-in-out infinite;
         }
         @keyframes oceanSway {
-            0%,
-            100% { transform: translateX(0) scaleY(1); }
+            0%, 100% { transform: translateX(0) scaleY(1); }
             50% { transform: translateX(-2.5%) scaleY(1.04); }
         }
 
+        /* boat band */
         .boat-track {
             position: absolute;
             top: 3%;
@@ -1488,6 +789,7 @@
             100% { transform: translateY(-4px) rotate(2.5deg); }
         }
 
+        /* water platform — frosted panel the content "floats" on */
         .water-platform {
             position: relative;
             background: rgba(255, 255, 255, 0.62);
@@ -1496,7 +798,7 @@
             border: 0.5px solid rgba(210, 210, 215, 0.5);
             border-radius: 28px;
             box-shadow: 0 30px 60px -30px rgba(60, 70, 80, 0.12);
-            padding: 32px 28px 40px;
+            padding: 36px 28px 44px;
         }
         .water-platform::before {
             content: '';
@@ -1509,6 +811,7 @@
             pointer-events: none;
         }
 
+        /* scroll-depth sentinels (invisible, just trigger thresholds) */
         .ocean-sentinel {
             position: absolute;
             width: 1px;
@@ -1516,6 +819,7 @@
             pointer-events: none;
         }
 
+        /* fish layer */
         .fish-layer {
             position: absolute;
             inset: 0;
@@ -1553,14 +857,14 @@
 
         @media (max-width: 640px) {
             .water-platform {
-                padding: 20px 14px 28px;
+                padding: 24px 16px 32px;
                 border-radius: 20px;
             }
             .boat-drift { width: 64px; }
         }
 
         /* ============================================================
-           MODAL
+           PROJECT OVERVIEW MODAL — Problem, Solution, Impact
            ============================================================ */
         .modal-overlay {
             position: fixed;
@@ -1593,7 +897,6 @@
             border: 0.5px solid var(--border-light);
             transform: scale(0.97) translateY(8px);
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: var(--shadow-lg);
         }
         .modal-overlay.open .modal {
             transform: scale(1) translateY(0);
@@ -1623,10 +926,12 @@
         .modal-category {
             color: var(--text-secondary);
             font-size: 0.8rem;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
+
+        /* Problem, Solution, Impact sections */
         .modal-section {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .modal-section h4 {
             font-size: 0.7rem;
@@ -1645,6 +950,7 @@
         .modal-section ul {
             padding-left: 18px;
         }
+
         .modal-tech {
             display: flex;
             flex-wrap: wrap;
@@ -1660,9 +966,10 @@
         .modal-actions {
             display: flex;
             gap: 12px;
-            margin-top: 22px;
+            margin-top: 24px;
             flex-wrap: wrap;
         }
+
         @media (max-width: 640px) {
             .modal {
                 padding: 24px 20px;
@@ -1673,10 +980,10 @@
         }
 
         /* ============================================================
-           ABOUT (standalone page)
+           ABOUT — premium typography
            ============================================================ */
         .about-page {
-            padding: 52px 0 72px;
+            padding: 56px 0 72px;
             min-height: 100vh;
             background-color: #fffefb;
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
@@ -1687,9 +994,10 @@
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.2;
         }
+        /* ink-style reveal: headline draws on like a typewriter, body fades in from a soft blur */
         .about-content h1 {
             display: inline-block;
             clip-path: inset(0 100% 0 0);
@@ -1721,7 +1029,7 @@
             font-size: 1.05rem;
             color: var(--text-secondary);
             max-width: 640px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             line-height: 1.7;
             letter-spacing: -0.01em;
             font-weight: 400;
@@ -1732,10 +1040,11 @@
             color: var(--text-secondary);
             max-width: 640px;
         }
+
         .journey,
         .tech-section,
         .resume-section {
-            margin-top: 44px;
+            margin-top: 48px;
             position: relative;
         }
         .journey::before,
@@ -1743,7 +1052,7 @@
         .resume-section::before {
             content: '';
             position: absolute;
-            top: -22px;
+            top: -24px;
             left: 0;
             right: 0;
             height: 1px;
@@ -1755,8 +1064,10 @@
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
+
+        /* faint sail silhouette drifting in once as the Journey enters view */
         .journey-ship {
             position: absolute;
             top: -6px;
@@ -1772,21 +1083,22 @@
             opacity: 0.55;
             transform: translateX(0);
         }
+
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 24px;
         }
         .timeline-item {
             display: flex;
-            gap: 14px;
+            gap: 16px;
             align-items: flex-start;
             border-left: none;
             padding-left: 0;
         }
         .timeline-marker {
             flex-shrink: 0;
-            width: 20px;
+            width: 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1799,15 +1111,15 @@
             transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .anchor-icon {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             color: var(--accent);
             opacity: 0;
             transform: translateY(-12px) scale(0.55);
             transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .timeline-item.visible .anchor-chain {
-            height: 24px;
+            height: 26px;
         }
         .timeline-item.visible .anchor-icon {
             opacity: 1;
@@ -1836,19 +1148,17 @@
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-            gap: 14px;
+            gap: 16px;
         }
         .tech-grid div {
             background: var(--bg);
             border: 0.8px solid var(--border-light);
             border-radius: var(--radius);
             padding: 16px 20px;
-            transition: border-color var(--transition), box-shadow var(--transition);
-            box-shadow: var(--shadow-sm);
+            transition: border-color var(--transition);
         }
         .tech-grid div:hover {
             border-color: var(--text-primary);
-            box-shadow: var(--shadow-md);
         }
         .tech-grid span {
             display: block;
@@ -1862,17 +1172,13 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
         .resume-iframe-wrapper {
             background: #fff;
             border: 0.8px solid var(--border-light);
             border-radius: var(--radius);
             overflow: hidden;
             height: 540px;
-            box-shadow: var(--shadow-sm);
-            transition: box-shadow var(--transition);
-        }
-        .resume-iframe-wrapper:hover {
-            box-shadow: var(--shadow-md);
         }
         .resume-iframe-wrapper iframe {
             width: 100%;
@@ -1881,27 +1187,30 @@
         }
 
         /* ============================================================
-           CONTACT PAGE
+           CONTACT — single-column on mobile
            ============================================================ */
         .contact-page {
-            padding: 44px 0 64px;
+            padding: 48px 0 72px;
             min-height: 100vh;
             background: var(--bg);
             position: relative;
             overflow: hidden;
             isolation: isolate;
         }
-        .contact-page>.container {
+        .contact-page > .container {
             position: relative;
             z-index: 1;
         }
 
+        /* ============================================================
+           THE BOAT, THE ISLAND, THE SHIP — Contact page story scene
+           ============================================================ */
         .story-scene {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 320px;
+            height: 360px;
             z-index: 0;
             overflow: hidden;
             pointer-events: none;
@@ -1953,17 +1262,87 @@
 
         .contact-header {
             text-align: center;
-            margin-bottom: 36px;
+            margin-bottom: 40px;
         }
         .contact-header h1 {
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.03em;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .contact-header p {
             color: var(--text-secondary);
             font-size: 0.95rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: var(--bg);
+            border: 0.8px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 24px 20px 22px;
+            text-align: center;
+            transition: border-color var(--transition), transform var(--transition);
+        }
+        .social-card:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .social-card .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+        .social-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .social-card .handle {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .social-card .action-btn {
+            display: inline-block;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 6px 20px;
+            border-radius: 980px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+            font-family: var(--font);
+        }
+        .social-card .action-btn:hover {
+            background: #2d2d2f;
+            transform: scale(0.97);
+        }
+        .social-card .action-btn:active {
+            transform: scale(0.94);
+        }
+
+        /* Mobile: single column */
+        @media (max-width: 640px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ============================================================
@@ -2015,7 +1394,7 @@
         }
 
         /* ============================================================
-           UTILITY
+           UTILITY: hide/show pages
            ============================================================ */
         .page {
             display: none;
@@ -2025,13 +1404,12 @@
         }
 
         /* ============================================================
-           REDUCED MOTION
+           REDUCED MOTION — static fallback for all ocean/story elements
            ============================================================ */
         @media (prefers-reduced-motion: reduce) {
             .fish-layer,
             .boat-track,
-            .ocean-wave,
-            .mobile-overlay::before {
+            .ocean-wave {
                 display: none !important;
             }
             .story-boat {
@@ -2060,49 +1438,6 @@
             .timeline-item .anchor-icon {
                 transition: none !important;
             }
-            .project-card:hover {
-                transform: none !important;
-            }
-            .social-card:hover {
-                transform: none !important;
-            }
-            .other-card:hover {
-                transform: none !important;
-            }
-            .btn-primary:hover,
-            .btn-secondary:hover,
-            .btn-cta:hover,
-            .btn-cta-secondary:hover,
-            .btn-overview:hover,
-            .btn-icon:hover,
-            .btn-email-cta:hover,
-            .social-btn:hover {
-                transform: none !important;
-            }
-            .mobile-nav a {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            .boat-track-contact .boat-icon {
-                transition: none !important;
-            }
-            .boat-track-contact .boat-line {
-                transition: none !important;
-            }
-            .what-i-do,
-            .work-preview,
-            .about-preview,
-            .what-i-do-card,
-            .work-preview-card,
-            .about-preview-content {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-            .hero-container {
-                transition: none !important;
-            }
         }
 
         /* ============================================================
@@ -2110,21 +1445,20 @@
            ============================================================ */
         @media (max-width: 640px) {
             .projects-page {
-                padding: 20px 0 40px;
+                padding: 24px 0 48px;
             }
             .featured-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 16px;
             }
             .other-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 10px;
             }
             .about-page {
-                padding: 28px 0 40px;
+                padding: 32px 0 48px;
             }
             .contact-page {
-                padding: 28px 0 40px;
+                padding: 32px 0 48px;
             }
             .page-header h1,
             .about-page h1,
@@ -2135,45 +1469,10 @@
         @media (max-width: 480px) {
             .featured-grid {
                 grid-template-columns: 1fr;
-                gap: 12px;
             }
             .other-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 8px;
             }
-            .cta-section h2 {
-                font-size: 1.3rem;
-            }
-            .cta-section .cta-message {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* ============================================================
-           FOCUS STATES
-           ============================================================ */
-        a:focus-visible,
-        button:focus-visible,
-        .btn-primary:focus-visible,
-        .btn-secondary:focus-visible,
-        .btn-cta:focus-visible,
-        .btn-cta-secondary:focus-visible,
-        .btn-overview:focus-visible,
-        .btn-icon:focus-visible,
-        .btn-email-cta:focus-visible,
-        .social-btn:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-        .modal-close:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-        .hamburger:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-            border-radius: 4px;
         }
     </style>
 </head>
@@ -2194,10 +1493,7 @@
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="container navbar-inner">
-            <div class="logo-wrapper" data-route="home">
-                <span class="logo-badge">MK</span>
-                <span class="logo-text">Manikandan</span>
-            </div>
+            <a class="logo" data-route="home">MK</a>
             <div class="nav-links">
                 <a data-route="home" class="active">Home</a>
                 <a data-route="myApp">Work</a>
@@ -2216,25 +1512,23 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-nav" id="mobileNav">
         <button class="close-btn" id="mobileCloseBtn" aria-label="Close menu">✕</button>
-        <a data-route="home" style="--item-index:0;">Home</a>
-        <a data-route="myApp" style="--item-index:1;">Work</a>
-        <a data-route="about" style="--item-index:2;">About</a>
-        <a data-route="contact" style="--item-index:3;">Contact</a>
+        <a data-route="home">Home</a>
+        <a data-route="myApp">Work</a>
+        <a data-route="about">About</a>
+        <a data-route="contact">Contact</a>
     </div>
 
     <!-- ===== PAGE CONTAINER ===== -->
     <div class="page-transition" id="pageContainer">
 
-        <!-- ======== HOME (with all sections & scroll animations) ======== -->
+        <!-- ======== HOME ======== -->
         <div class="page active" id="page-home">
-
-            <!-- Hero -->
-            <section class="home" id="heroSection">
-                <div class="hero-container" id="heroContainer">
+            <section class="home">
+                <div class="hero-container">
                     <div class="hero-card">
                         <div class="hero-image-wrapper">
                             <div class="tilt-wrapper" id="tiltWrapper">
-                                <img src="profile.png" alt="Manikandan — Full Stack Developer" loading="lazy" />
+                           <img src="profile.png" alt="Manikandan — Full Stack Developer" loading="lazy" />
                             </div>
                         </div>
                         <div class="hero-content">
@@ -2260,135 +1554,12 @@
                     </div>
                 </div>
             </section>
-
-            <!-- What I Do -->
-            <section class="what-i-do" id="whatIdoSection">
-                <div class="container">
-                    <h2 class="section-title">What I Do</h2>
-                    <div class="what-i-do-grid">
-                        <div class="what-i-do-card" data-delay="0">
-                            <h3>AI Application Generator</h3>
-                            <p>Build full‑stack AI applications with zero‑touch generation, authentication, and admin panels.</p>
-                            <button class="btn-small" data-route="myApp" data-project="aura">View Aura →</button>
-                        </div>
-                        <div class="what-i-do-card" data-delay="150">
-                            <h3>Full Stack Ecommerce</h3>
-                            <p>Scalable ecommerce platforms with JWT auth, admin dashboard, and order management.</p>
-                            <button class="btn-small" data-route="myApp" data-project="ecommerce">View Ecommerce →</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Work Preview -->
-            <section class="work-preview" id="workPreviewSection">
-                <div class="container">
-                    <h2 class="section-title">Featured Work</h2>
-                    <p class="section-sub">Selected projects demonstrating full‑stack expertise.</p>
-                    <div class="work-preview-grid" id="workPreviewGrid">
-                        <!-- injected by JS -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Preview -->
-            <section class="about-preview" id="aboutPreviewSection">
-                <div class="container">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-sub">
-                        I'm a Full‑Stack Developer with a passion for building scalable, elegant web applications.
-                        From HTML &amp; CSS to React, Node.js, and AI‑assisted development.
-                    </p>
-                    <div class="about-preview-content">
-                        <p>
-                            I focus on delivering production‑ready applications that solve real problems,
-                            combining technical excellence with clean, thoughtful design.
-                        </p>
-                        <a class="btn-primary btn-about" data-route="about">Learn More →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Preview (full contact page content) -->
-            <section class="contact-page" id="contactPreviewSection" style="padding-top:20px; padding-bottom:40px; min-height:auto;">
-                <div class="story-scene" id="storyScene" aria-hidden="true" style="height:200px;">
-                    <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
-                        <defs>
-                            <linearGradient id="storySkyGrad2" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#ffffff"/>
-                                <stop offset="55%" stop-color="#f6f8f9"/>
-                                <stop offset="100%" stop-color="#eef2f5"/>
-                            </linearGradient>
-                            <radialGradient id="storyGlow2" cx="50%" cy="38%" r="55%">
-                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                            </radialGradient>
-                        </defs>
-                        <rect class="story-sky" x="0" y="0" width="1200" height="200" fill="url(#storySkyGrad2)"/>
-                        <rect x="0" y="0" width="1200" height="200" fill="url(#storyGlow2)"/>
-                        <line x1="0" y1="120" x2="1200" y2="120" stroke="#e3e7ea" stroke-width="1"/>
-                        <g class="story-back-layer">
-                            <g class="story-island">
-                                <ellipse cx="170" cy="124" rx="80" ry="10" fill="currentColor" opacity="0.55"/>
-                                <path d="M120 124 C130 90 155 75 175 75 C198 75 222 92 232 124 Z" fill="currentColor" opacity="0.6"/>
-                                <circle cx="160" cy="60" r="9" fill="currentColor" opacity="0.4"/>
-                            </g>
-                            <g class="story-ship" transform="translate(980,88)">
-                                <path d="M-34 30 L34 30 L24 44 L-24 44 Z" fill="currentColor"/>
-                                <line x1="0" y1="30" x2="0" y2="-8" stroke="currentColor" stroke-width="2"/>
-                                <path d="M2 -6 L2 24 L26 24 Z" fill="currentColor" opacity="0.85"/>
-                                <path d="M-2 -2 L-2 24 L-20 21 Z" fill="currentColor" opacity="0.6"/>
-                            </g>
-                        </g>
-                        <g class="story-boat" transform="translate(600,136)">
-                            <path d="M-46 18 L46 18 L34 34 L-34 34 Z" fill="currentColor"/>
-                            <line x1="0" y1="18" x2="0" y2="-22" stroke="currentColor" stroke-width="2"/>
-                            <path d="M1 -20 L1 14 L24 14 Z" fill="#eef2f5" opacity="0.9"/>
-                            <circle cx="-6" cy="6" r="5" fill="currentColor"/>
-                            <rect x="-9" y="10" width="6" height="8" fill="currentColor"/>
-                            <circle class="story-signal" cx="0" cy="-22" r="3" fill="#0071e3"/>
-                        </g>
-                        <ellipse cx="600" cy="162" rx="70" ry="6" fill="#e9edf0" opacity="0.7"/>
-                    </svg>
-                </div>
-                <div class="container">
-                    <div class="contact-header" style="margin-bottom:24px;">
-                        <h1 style="font-size:1.8rem;">Let's Connect</h1>
-                        <p>Reach out through any of these channels.</p>
-                    </div>
-                    <div class="contact-grid" id="contactGrid">
-                        <!-- injected by JS -->
-                    </div>
-                    <div class="boat-track-contact" id="boatTrackContact">
-                        <div class="boat-line" id="boatLine"></div>
-                        <div class="boat-icon" id="boatIcon"><i class="fas fa-ship"></i></div>
-                    </div>
-                    <div class="cta-section" style="margin-top:32px; padding:32px 24px 28px;">
-                        <h2 style="font-size:1.6rem;">Let's Build Something Amazing</h2>
-                        <p class="cta-message" style="margin-bottom:18px;">
-                            I'm always interested in discussing new opportunities, full‑stack projects,
-                            AI products, and creative ideas. Let's bring your vision to life.
-                        </p>
-                        <div class="cta-actions">
-                            <a href="mailto:manikandankumar0506@gmail.com" class="btn-email-cta" aria-label="Send email to Manikandan">
-                                <i class="fas fa-envelope"></i> Send Email
-                            </a>
-                            <a href="https://linkedin.com/in/k-manikandan-724630375" target="_blank" rel="noopener" class="btn-cta-secondary">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                    <footer class="footer" style="margin-top:40px;">
-                        &copy; 2026 Manikandan. All rights reserved.
-                    </footer>
-                </div>
-            </section>
-
         </div>
 
         <!-- ======== MY APP (PROJECTS) ======== -->
         <div class="page" id="page-myApp">
             <div class="projects-page">
+
                 <div class="ocean-bg" id="oceanBg" aria-hidden="true">
                     <svg class="fish-defs" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
                         <defs>
@@ -2406,6 +1577,7 @@
                             </symbol>
                         </defs>
                     </svg>
+
                     <svg class="ocean-wave wave-1" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
                         <path d="M0,90 C150,40 350,130 600,80 C850,30 1050,120 1200,70 L1200,160 L0,160 Z" fill="currentColor"/>
                     </svg>
@@ -2415,6 +1587,7 @@
                     <svg class="ocean-wave wave-3" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
                         <path d="M0,120 C220,80 420,160 700,110 C920,70 1080,140 1200,110 L1200,200 L0,200 Z" fill="currentColor"/>
                     </svg>
+
                     <div class="boat-track">
                         <div class="boat-drift">
                             <div class="boat-bob">
@@ -2427,28 +1600,37 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="fish-layer" id="fishLayer"></div>
+
                     <div class="ocean-sentinel" id="oceanSentinel1" style="top:18%;"></div>
                     <div class="ocean-sentinel" id="oceanSentinel2" style="top:48%;"></div>
                     <div class="ocean-sentinel" id="oceanSentinel3" style="top:85%;"></div>
                 </div>
+
                 <div class="container">
                     <div class="water-platform">
                         <header class="page-header">
                             <h1>Featured Work</h1>
                             <p>Selected projects demonstrating full‑stack expertise and design craftsmanship.</p>
                         </header>
-                        <div class="featured-grid" id="featuredGrid"></div>
+
+                        <div class="featured-grid" id="featuredGrid">
+                            <!-- injected by JS -->
+                        </div>
+
                         <section class="other-projects">
                             <h2>Other Projects</h2>
-                            <div class="other-grid" id="otherGrid"></div>
+                            <div class="other-grid" id="otherGrid">
+                                <!-- injected by JS -->
+                            </div>
                         </section>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ======== ABOUT (standalone) ======== -->
+        <!-- ======== ABOUT ======== -->
         <div class="page" id="page-about">
             <div class="about-page" id="aboutSection">
                 <div class="container">
@@ -2465,6 +1647,7 @@
                             delivering production‑ready applications that solve real problems.
                         </p>
                     </div>
+
                     <div class="journey" id="journeySection">
                         <h2>Journey</h2>
                         <svg class="journey-ship" viewBox="0 0 80 50" aria-hidden="true">
@@ -2524,6 +1707,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="tech-section">
                         <h2>Tech Stack</h2>
                         <div class="tech-grid">
@@ -2533,6 +1717,7 @@
                             <div><span>Tools</span><p>Git, Vercel, Render</p></div>
                         </div>
                     </div>
+
                     <div class="resume-section">
                         <h2>Resume</h2>
                         <div class="resume-iframe-wrapper">
@@ -2543,39 +1728,47 @@
             </div>
         </div>
 
-        <!-- ======== CONTACT (standalone) ======== -->
+        <!-- ======== CONTACT ======== -->
         <div class="page" id="page-contact">
-            <div class="contact-page" id="contactStandaloneSection">
-                <div class="story-scene" id="storySceneStandalone" aria-hidden="true">
-                    <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice">
+            <div class="contact-page" id="contactSection">
+
+                <div class="story-scene" id="storyScene" aria-hidden="true">
+                    <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice">
                         <defs>
-                            <linearGradient id="storySkyGrad3" x1="0" y1="0" x2="0" y2="1">
+                            <linearGradient id="storySkyGrad" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0%" stop-color="#ffffff"/>
                                 <stop offset="55%" stop-color="#f6f8f9"/>
                                 <stop offset="100%" stop-color="#eef2f5"/>
                             </linearGradient>
-                            <radialGradient id="storyGlow3" cx="50%" cy="38%" r="55%">
+                            <radialGradient id="storyGlow" cx="50%" cy="38%" r="55%">
                                 <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
                                 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
                             </radialGradient>
                         </defs>
-                        <rect class="story-sky" x="0" y="0" width="1200" height="320" fill="url(#storySkyGrad3)"/>
-                        <rect x="0" y="0" width="1200" height="320" fill="url(#storyGlow3)"/>
-                        <line x1="0" y1="190" x2="1200" y2="190" stroke="#e3e7ea" stroke-width="1"/>
+
+                        <rect class="story-sky" x="0" y="0" width="1200" height="360" fill="url(#storySkyGrad)"/>
+                        <rect x="0" y="0" width="1200" height="360" fill="url(#storyGlow)"/>
+                        <line x1="0" y1="210" x2="1200" y2="210" stroke="#e3e7ea" stroke-width="1"/>
+
                         <g class="story-back-layer">
+                            <!-- distant island -->
                             <g class="story-island">
-                                <ellipse cx="170" cy="194" rx="80" ry="10" fill="currentColor" opacity="0.55"/>
-                                <path d="M120 194 C130 160 155 145 175 145 C198 145 222 162 232 194 Z" fill="currentColor" opacity="0.6"/>
-                                <circle cx="160" cy="130" r="9" fill="currentColor" opacity="0.4"/>
+                                <ellipse cx="170" cy="214" rx="80" ry="10" fill="currentColor" opacity="0.55"/>
+                                <path d="M120 214 C130 180 155 165 175 165 C198 165 222 182 232 214 Z" fill="currentColor" opacity="0.6"/>
+                                <circle cx="160" cy="150" r="9" fill="currentColor" opacity="0.4"/>
                             </g>
-                            <g class="story-ship" transform="translate(980,158)">
+
+                            <!-- distant ship, sailing toward the boat -->
+                            <g class="story-ship" transform="translate(980,178)">
                                 <path d="M-34 30 L34 30 L24 44 L-24 44 Z" fill="currentColor"/>
                                 <line x1="0" y1="30" x2="0" y2="-8" stroke="currentColor" stroke-width="2"/>
                                 <path d="M2 -6 L2 24 L26 24 Z" fill="currentColor" opacity="0.85"/>
                                 <path d="M-2 -2 L-2 24 L-20 21 Z" fill="currentColor" opacity="0.6"/>
                             </g>
                         </g>
-                        <g class="story-boat" transform="translate(600,216)">
+
+                        <!-- small boat, one passenger, alone mid-ocean -->
+                        <g class="story-boat" transform="translate(600,236)">
                             <path d="M-46 18 L46 18 L34 34 L-34 34 Z" fill="currentColor"/>
                             <line x1="0" y1="18" x2="0" y2="-22" stroke="currentColor" stroke-width="2"/>
                             <path d="M1 -20 L1 14 L24 14 Z" fill="#eef2f5" opacity="0.9"/>
@@ -2583,39 +1776,19 @@
                             <rect x="-9" y="10" width="6" height="8" fill="currentColor"/>
                             <circle class="story-signal" cx="0" cy="-22" r="3" fill="#0071e3"/>
                         </g>
-                        <ellipse cx="600" cy="242" rx="70" ry="6" fill="#e9edf0" opacity="0.7"/>
+
+                        <ellipse cx="600" cy="262" rx="70" ry="6" fill="#e9edf0" opacity="0.7"/>
                     </svg>
                 </div>
+
                 <div class="container">
                     <div class="contact-header">
                         <h1>Let's Connect</h1>
                         <p>Reach out through any of these channels.</p>
                     </div>
-                    <div class="contact-grid" id="contactGridStandalone">
+                    <div class="contact-grid" id="contactGrid">
                         <!-- injected by JS -->
                     </div>
-                    <div class="boat-track-contact" id="boatTrackContactStandalone">
-                        <div class="boat-line" id="boatLineStandalone"></div>
-                        <div class="boat-icon" id="boatIconStandalone"><i class="fas fa-ship"></i></div>
-                    </div>
-                    <div class="cta-section">
-                        <h2>Let's Build Something Amazing</h2>
-                        <p class="cta-message">
-                            I'm always interested in discussing new opportunities, full‑stack projects,
-                            AI products, and creative ideas. Let's bring your vision to life.
-                        </p>
-                        <div class="cta-actions">
-                            <a href="mailto:manikandankumar0506@gmail.com" class="btn-email-cta" aria-label="Send email to Manikandan">
-                                <i class="fas fa-envelope"></i> Send Email
-                            </a>
-                            <a href="https://linkedin.com/in/k-manikandan-724630375" target="_blank" rel="noopener" class="btn-cta-secondary">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                    <footer class="footer">
-                        &copy; 2026 Manikandan. All rights reserved.
-                    </footer>
                 </div>
             </div>
         </div>
@@ -2784,54 +1957,42 @@
 
         const contactLinks = [{
             icon: 'fa-envelope',
-            iconClass: 'icon-email',
             title: 'Email',
             handle: 'manikandankumar0506@gmail.com',
             action: 'Send Message',
             href: 'mailto:manikandankumar0506@gmail.com',
-            aria: 'Send email to Manikandan',
-            btnClass: 'btn-email',
-            label: 'Email'
+            aria: 'Send email to Manikandan'
         }, {
             icon: 'fa-linkedin',
-            iconClass: 'icon-linkedin',
             title: 'LinkedIn',
-            handle: 'k-manikandan-724630375',
+            handle: '@k-manikandan-724630375',
             action: 'Connect',
             href: 'https://linkedin.com/in/k-manikandan-724630375',
-            aria: 'Connect on LinkedIn',
-            btnClass: 'btn-linkedin',
-            label: 'LinkedIn'
+            aria: 'Connect on LinkedIn'
         }, {
             icon: 'fa-instagram',
-            iconClass: 'icon-instagram',
             title: 'Instagram',
-            handle: 'the_life_of_kabaddi',
-            action: 'Follow',
+            handle: '@the_life_of_kabaddi',
+            action: 'Connect',
             href: 'https://www.instagram.com/the_life_of_kabaddi/',
-            aria: 'Follow on Instagram',
-            btnClass: 'btn-instagram',
-            label: 'Instagram'
+            aria: 'Follow on Instagram'
         }, {
             icon: 'fa-github',
-            iconClass: 'icon-github',
             title: 'GitHub',
-            handle: 'ukmani01',
+            handle: '@ukmani01',
             action: 'View Profile',
             href: 'https://github.com/ukmani01',
-            aria: 'View GitHub profile',
-            btnClass: 'btn-github',
-            label: 'GitHub'
+            aria: 'View GitHub profile'
         }];
 
         // ============================================================
-        // ACCESSIBILITY
+        // ACCESSIBILITY: reduced motion
         // ============================================================
 
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // ============================================================
-        // OCEAN OF WORK
+        // OCEAN OF WORK — fish generation + scroll-depth reveal
         // ============================================================
 
         let fishGenerated = false;
@@ -2858,8 +2019,7 @@
                     const duration = 20 + cfg.stage * 4 + i * 2.6;
                     const delay = -(i * 3.1 + cfg.stage * 1.5);
                     html += '<svg class="fish ' + dir + '" data-stage="' + cfg.stage + '" viewBox="' + cfg.viewBox + '" ' +
-                        'style="--fish-size:' + size + 'px;--fish-lane:' + lane + '%;--fish-duration:' + duration + 's;--fish-delay:' +
-                        delay + 's;color:' + cfg.color + ';">' +
+                        'style="--fish-size:' + size + 'px;--fish-lane:' + lane + '%;--fish-duration:' + duration + 's;--fish-delay:' + delay + 's;color:' + cfg.color + ';">' +
                         '<use href="#' + cfg.symbol + '"></use></svg>';
                 }
                 laneSeed += 14;
@@ -2870,8 +2030,10 @@
         function initOceanScene() {
             const oceanBg = document.getElementById('oceanBg');
             if (!oceanBg) return;
+
             buildFishLayer();
             if (prefersReducedMotion) return;
+
             [1, 2, 3].forEach(stageNum => {
                 if (oceanStagesTriggered[stageNum]) return;
                 const sentinel = document.getElementById('oceanSentinel' + stageNum);
@@ -2890,7 +2052,7 @@
         }
 
         // ============================================================
-        // JOURNEY
+        // JOURNEY — ship reveal + anchor-drop timeline
         // ============================================================
 
         let journeyShipTriggered = false;
@@ -2910,6 +2072,7 @@
                 }, { threshold: 0.2 });
                 shipObserver.observe(journey);
             }
+
             document.querySelectorAll('.timeline-item').forEach(item => {
                 const idx = item.dataset.index || '0';
                 if (timelineItemsTriggered.has(idx)) return;
@@ -2928,194 +2091,26 @@
         }
 
         // ============================================================
-        // CONTACT STORY
+        // CONTACT STORY — the boat, the island, the ship
         // ============================================================
 
         let contactStoryTriggered = false;
-        let contactStoryTriggeredStandalone = false;
 
         function initContactStory() {
             const scene = document.getElementById('storyScene');
-            const section = document.getElementById('contactPreviewSection');
-            if (scene && section && !contactStoryTriggered) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !contactStoryTriggered) {
-                            setTimeout(() => scene.classList.add('story-near'), 500);
-                            contactStoryTriggered = true;
-                            observer.disconnect();
-                        }
-                    });
-                }, { threshold: 0.25 });
-                observer.observe(section);
-            }
-            // Standalone
-            const scene2 = document.getElementById('storySceneStandalone');
-            const section2 = document.getElementById('contactStandaloneSection');
-            if (scene2 && section2 && !contactStoryTriggeredStandalone) {
-                const observer2 = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !contactStoryTriggeredStandalone) {
-                            setTimeout(() => scene2.classList.add('story-near'), 500);
-                            contactStoryTriggeredStandalone = true;
-                            observer2.disconnect();
-                        }
-                    });
-                }, { threshold: 0.25 });
-                observer2.observe(section2);
-            }
-        }
+            const section = document.getElementById('contactSection');
+            if (!scene || !section || contactStoryTriggered) return;
 
-        // ============================================================
-        // BOAT ANIMATION
-        // ============================================================
-
-        function initContactBoat() {
-            // Preview boat
-            const track = document.getElementById('boatTrackContact');
-            const line = document.getElementById('boatLine');
-            const icon = document.getElementById('boatIcon');
-            const section = document.getElementById('contactPreviewSection');
-            if (track && line && icon && section) {
-                function updateBoat() {
-                    const rect = section.getBoundingClientRect();
-                    const winHeight = window.innerHeight;
-                    const totalHeight = rect.height;
-                    const visibleStart = Math.max(0, -rect.top);
-                    const visibleEnd = Math.min(totalHeight, winHeight - rect.top);
-                    const visible = Math.max(0, visibleEnd - visibleStart);
-                    const progress = totalHeight > 0 ? Math.min(1, Math.max(0, visible / totalHeight)) : 0;
-                    const leftPercent = progress * 100;
-                    line.style.width = leftPercent + '%';
-                    icon.style.left = leftPercent + '%';
-                }
-                window.addEventListener('scroll', updateBoat, { passive: true });
-                window.addEventListener('resize', updateBoat, { passive: true });
-                setTimeout(updateBoat, 100);
-                const observer = new MutationObserver(() => {
-                    if (document.getElementById('page-home').classList.contains('active')) { updateBoat(); }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !contactStoryTriggered) {
+                        setTimeout(() => scene.classList.add('story-near'), 500);
+                        contactStoryTriggered = true;
+                        observer.disconnect();
+                    }
                 });
-                observer.observe(document.getElementById('page-home'), { attributes: true, attributeFilter: ['class'] });
-            }
-
-            // Standalone boat
-            const track2 = document.getElementById('boatTrackContactStandalone');
-            const line2 = document.getElementById('boatLineStandalone');
-            const icon2 = document.getElementById('boatIconStandalone');
-            const section2 = document.getElementById('contactStandaloneSection');
-            if (track2 && line2 && icon2 && section2) {
-                function updateBoat2() {
-                    const rect = section2.getBoundingClientRect();
-                    const winHeight = window.innerHeight;
-                    const totalHeight = rect.height;
-                    const visibleStart = Math.max(0, -rect.top);
-                    const visibleEnd = Math.min(totalHeight, winHeight - rect.top);
-                    const visible = Math.max(0, visibleEnd - visibleStart);
-                    const progress = totalHeight > 0 ? Math.min(1, Math.max(0, visible / totalHeight)) : 0;
-                    const leftPercent = progress * 100;
-                    line2.style.width = leftPercent + '%';
-                    icon2.style.left = leftPercent + '%';
-                }
-                window.addEventListener('scroll', updateBoat2, { passive: true });
-                window.addEventListener('resize', updateBoat2, { passive: true });
-                setTimeout(updateBoat2, 100);
-                const observer2 = new MutationObserver(() => {
-                    if (document.getElementById('page-contact').classList.contains('active')) { updateBoat2(); }
-                });
-                observer2.observe(document.getElementById('page-contact'), { attributes: true, attributeFilter: ['class'] });
-            }
-        }
-
-        // ============================================================
-        // HERO FLY-AWAY ON SCROLL
-        // ============================================================
-
-        function initHeroScroll() {
-            const heroContainer = document.getElementById('heroContainer');
-            const heroSection = document.getElementById('heroSection');
-            if (!heroContainer || !heroSection) return;
-
-            function updateHero() {
-                const rect = heroSection.getBoundingClientRect();
-                const winHeight = window.innerHeight;
-                // Progress from 0 (fully visible at top) to 1 (fully scrolled out)
-                const progress = Math.min(1, Math.max(0, -rect.top / (rect.height * 1.2)));
-
-                // Fly up and fade out
-                const translateY = -progress * 80;
-                const scale = 1 - progress * 0.04;
-                const opacity = 1 - progress;
-
-                heroContainer.style.transform = `translateY(${translateY}px) scale(${scale})`;
-                heroContainer.style.opacity = opacity;
-                heroContainer.style.transition = 'transform 0.1s ease, opacity 0.1s ease';
-            }
-
-            window.addEventListener('scroll', updateHero, { passive: true });
-            window.addEventListener('resize', updateHero, { passive: true });
-            setTimeout(updateHero, 50);
-        }
-
-        // ============================================================
-        // SECTION REVEAL ON SCROLL (Work, About, Contact previews)
-        // ============================================================
-
-        function initScrollReveals() {
-            // What I Do section
-            const whatIdo = document.getElementById('whatIdoSection');
-            if (whatIdo) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            whatIdo.classList.add('visible');
-                            // Reveal cards with stagger
-                            const cards = whatIdo.querySelectorAll('.what-i-do-card');
-                            cards.forEach((card, i) => {
-                                const delay = parseInt(card.dataset.delay) || i * 150;
-                                setTimeout(() => card.classList.add('visible'), delay);
-                            });
-                            observer.disconnect();
-                        }
-                    });
-                }, { threshold: 0.15 });
-                observer.observe(whatIdo);
-            }
-
-            // Work Preview section
-            const workPreview = document.getElementById('workPreviewSection');
-            if (workPreview) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            workPreview.classList.add('visible');
-                            const cards = workPreview.querySelectorAll('.work-preview-card');
-                            cards.forEach((card, i) => {
-                                setTimeout(() => card.classList.add('visible'), i * 120);
-                            });
-                            observer.disconnect();
-                        }
-                    });
-                }, { threshold: 0.15 });
-                observer.observe(workPreview);
-            }
-
-            // About Preview section
-            const aboutPreview = document.getElementById('aboutPreviewSection');
-            if (aboutPreview) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            aboutPreview.classList.add('visible');
-                            const content = aboutPreview.querySelector('.about-preview-content');
-                            if (content) {
-                                setTimeout(() => content.classList.add('visible'), 300);
-                            }
-                            observer.disconnect();
-                        }
-                    });
-                }, { threshold: 0.15 });
-                observer.observe(aboutPreview);
-            }
+            }, { threshold: 0.25 });
+            observer.observe(section);
         }
 
         // ============================================================
@@ -3124,6 +2119,7 @@
 
         let currentRoute = 'home';
         let isTransitioning = false;
+
         const routes = ['home', 'myApp', 'about', 'contact'];
         const pageMap = {
             home: 'page-home',
@@ -3136,48 +2132,62 @@
             if (isTransitioning || route === currentRoute) return;
             isTransitioning = true;
 
-            if (pushState) window.location.hash = route;
+            // Update URL hash
+            if (pushState) {
+                window.location.hash = route;
+            }
 
+            // Hide all pages
             document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
-            const target = document.getElementById(pageMap[route]);
-            if (target) target.classList.add('active');
 
+            // Show target
+            const target = document.getElementById(pageMap[route]);
+            if (target) {
+                target.classList.add('active');
+                // Re-trigger animation
+                const content = target.querySelector('.page-content');
+                if (content) {
+                    content.classList.remove('exit');
+                    // Force reflow
+                    void content.offsetWidth;
+                    content.style.animation = 'none';
+                    void content.offsetWidth;
+                    content.style.animation = '';
+                }
+            }
+
+            // Update nav links
             document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(el => {
-                el.classList.toggle('active', el.dataset.route === route);
-            });
-            document.querySelectorAll('.logo-wrapper').forEach(el => {
                 el.classList.toggle('active', el.dataset.route === route);
             });
 
             currentRoute = route;
             isTransitioning = false;
 
-            if (route === 'home') {
-                initHomeStats();
-                initHeroScroll();
-                initScrollReveals();
-                initContactStory();
-                initContactBoat();
-            }
-            if (route === 'myApp') { initProjectCards();
-                initOceanScene(); }
-            if (route === 'about') { initAboutObserver();
-                initJourneyAnimations(); }
-            if (route === 'contact') { initContactCardsStandalone();
-                initContactStory();
-                initContactBoat(); }
+            // Trigger page-specific animations
+            if (route === 'home') initHomeStats();
+            if (route === 'myApp') { initProjectCards(); initOceanScene(); }
+            if (route === 'about') { initAboutObserver(); initJourneyAnimations(); }
+            if (route === 'contact') { initContactCards(); initContactStory(); }
         }
 
         // ============================================================
-        // LOADING
+        // LOADING SCREEN
         // ============================================================
 
         function initLoading() {
             const fill = document.getElementById('progressFill');
             const screen = document.getElementById('loadingScreen');
-            setTimeout(() => fill.style.width = '100%', 100);
+
+            // Animate progress bar
+            setTimeout(() => {
+                fill.style.width = '100%';
+            }, 100);
+
+            // Hide after 1.6s + fade
             setTimeout(() => {
                 screen.classList.add('hidden');
+                // Start the app
                 initApp();
             }, 1800);
         }
@@ -3187,24 +2197,27 @@
         // ============================================================
 
         function initApp() {
+            // Read hash
             const hash = window.location.hash.replace('#', '');
             const startRoute = routes.includes(hash) ? hash : 'home';
             currentRoute = startRoute;
 
+            // Show initial page
             document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(pageMap[startRoute]);
             if (target) target.classList.add('active');
 
+            // Update nav
             document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(el => {
                 el.classList.toggle('active', el.dataset.route === startRoute);
             });
 
+            // Render dynamic content
             renderFeaturedProjects();
             renderOtherProjects();
             renderContactCards();
-            renderContactCardsStandalone();
-            renderWorkPreviewCards();
 
+            // Init features
             initTilt();
             initHomeStats();
             initProjectCards();
@@ -3212,78 +2225,52 @@
             initAboutObserver();
             initJourneyAnimations();
             initContactCards();
-            initContactCardsStandalone();
             initContactStory();
-            initContactBoat();
-            initHeroScroll();
-            initScrollReveals();
             initNavEvents();
             initModalEvents();
             initRouteEvents();
-            initWhatIDoButtons();
 
+            // Trigger stats if on home
             if (startRoute === 'home') {
-                setTimeout(() => {
-                    initHomeStats();
-                    initHeroScroll();
-                    initScrollReveals();
-                }, 300);
+                setTimeout(initHomeStats, 300);
             }
         }
 
         // ============================================================
-        // WHAT I DO BUTTONS
-        // ============================================================
-
-        function initWhatIDoButtons() {
-            document.querySelectorAll('.what-i-do-card .btn-small').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const route = this.dataset.route;
-                    const projectId = this.dataset.project;
-                    if (route) {
-                        navigateTo(route);
-                        setTimeout(() => {
-                            const cards = document.querySelectorAll('.project-card');
-                            let targetCard = null;
-                            cards.forEach(card => {
-                                const title = card.querySelector('h3')?.textContent?.toLowerCase();
-                                if (title && title.includes(projectId)) targetCard = card;
-                            });
-                            if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 500);
-                    }
-                });
-            });
-        }
-
-        // ============================================================
-        // TILT
+        // TILT EFFECT
         // ============================================================
 
         function initTilt() {
             const wrapper = document.getElementById('tiltWrapper');
             if (!wrapper) return;
+
+            let isTilting = false;
+
             wrapper.addEventListener('mousemove', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
                 this.style.transform = 'rotateY(' + (x * 8) + 'deg) rotateX(' + (y * -8) + 'deg)';
+                isTilting = true;
             });
+
             wrapper.addEventListener('mouseleave', function() {
                 this.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                isTilting = false;
             });
         }
 
         // ============================================================
-        // HOME STATS
+        // HOME STATS ANIMATION
         // ============================================================
 
         let statsAnimated = false;
 
         function initHomeStats() {
             const container = document.getElementById('statsContainer');
-            if (!container || statsAnimated) return;
+            if (!container) return;
+            if (statsAnimated) return;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !statsAnimated) {
@@ -3293,6 +2280,7 @@
                     }
                 });
             }, { threshold: 0.3 });
+
             observer.observe(container);
         }
 
@@ -3301,9 +2289,11 @@
             let progress = 0;
             const duration = 1200;
             const step = 20;
+
             const elProjects = document.getElementById('statProjects');
             const elFeatured = document.getElementById('statFeatured');
             const elSatisfaction = document.getElementById('statSatisfaction');
+
             const interval = setInterval(() => {
                 progress += step;
                 const p = Math.min(progress / duration, 1);
@@ -3315,7 +2305,7 @@
         }
 
         // ============================================================
-        // PROJECT CARDS
+        // PROJECT CARDS — render + intersection observer
         // ============================================================
 
         function renderFeaturedProjects() {
@@ -3359,53 +2349,18 @@
                 a.href = p.live;
                 a.target = '_blank';
                 a.rel = 'noopener';
-                a.innerHTML = `<h3>${p.title}</h3><div class="other-links"><span>Live</span><span>GitHub</span></div>`;
-                grid.appendChild(a);
-            });
-        }
-
-        function renderWorkPreviewCards() {
-            const grid = document.getElementById('workPreviewGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            const previewProjects = featuredProjects.slice(0, 3);
-            previewProjects.forEach((p, i) => {
-                const card = document.createElement('div');
-                card.className = 'work-preview-card';
-                card.innerHTML = `
+                a.innerHTML = `
               <h3>${p.title}</h3>
-              <div class="work-category">${p.category}</div>
-              <p>${p.description.substring(0, 80)}${p.description.length > 80 ? '…' : ''}</p>
-              <div class="work-tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
-              <button class="btn-small" data-route="myApp" data-project="${p.id}">View Project →</button>
+              <div class="other-links"><span>Live</span><span>GitHub</span></div>
             `;
-                grid.appendChild(card);
-            });
-            // Attach click handlers for work preview cards
-            grid.querySelectorAll('.btn-small').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const route = this.dataset.route;
-                    const projectId = this.dataset.project;
-                    if (route) {
-                        navigateTo(route);
-                        setTimeout(() => {
-                            const cards = document.querySelectorAll('.project-card');
-                            let targetCard = null;
-                            cards.forEach(card => {
-                                const title = card.querySelector('h3')?.textContent?.toLowerCase();
-                                if (title && title.includes(projectId)) targetCard = card;
-                            });
-                            if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 500);
-                    }
-                });
+                grid.appendChild(a);
             });
         }
 
         function initProjectCards() {
             const cards = document.querySelectorAll('#featuredGrid .project-card');
             if (!cards.length) return;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -3421,6 +2376,7 @@
                     }
                 });
             }, { threshold: 0.1 });
+
             cards.forEach(card => observer.observe(card));
         }
 
@@ -3431,6 +2387,7 @@
         let currentModalId = null;
 
         function initModalEvents() {
+            // Delegate clicks on overview buttons
             document.addEventListener('click', function(e) {
                 const btn = e.target.closest('.btn-overview');
                 if (btn) {
@@ -3438,10 +2395,14 @@
                     if (id) openModal(id);
                 }
             });
+
+            // Close modal
             document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
             document.getElementById('modalOverlay').addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
+
+            // Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') closeModal();
             });
@@ -3451,27 +2412,49 @@
             const project = featuredProjects.find(p => p.id === id);
             if (!project) return;
             currentModalId = id;
+
             const overlay = document.getElementById('modalOverlay');
             document.getElementById('modalTitle').textContent = project.title;
             document.getElementById('modalCategory').textContent = project.category;
+
             const body = document.getElementById('modalBody');
             body.innerHTML = `
-            <div class="modal-section"><h4>Problem</h4><p>${project.overview.problem}</p></div>
-            <div class="modal-section"><h4>Solution</h4><p>${project.overview.solution}</p></div>
-            <div class="modal-section"><h4>Impact</h4><p>${project.overview.impact}</p></div>
-            <div class="modal-section"><h4>Tech Stack</h4><div class="modal-tech">${project.tech.map(t => `<span>${t}</span>`).join('')}</div></div>
+            <div class="modal-section">
+              <h4>Problem</h4>
+              <p>${project.overview.problem}</p>
+            </div>
+            <div class="modal-section">
+              <h4>Solution</h4>
+              <p>${project.overview.solution}</p>
+            </div>
+            <div class="modal-section">
+              <h4>Impact</h4>
+              <p>${project.overview.impact}</p>
+            </div>
+            <div class="modal-section">
+              <h4>Tech Stack</h4>
+              <div class="modal-tech">${project.tech.map(t => `<span>${t}</span>`).join('')}</div>
+            </div>
           `;
+
             const actions = document.getElementById('modalActions');
             actions.innerHTML = `
             <a href="${project.live}" target="_blank" rel="noopener" class="btn-primary">Live Demo</a>
             <a href="${project.github}" target="_blank" rel="noopener" class="btn-secondary">GitHub</a>
           `;
+
+            // Prevent body scroll
             document.body.style.overflow = 'hidden';
-            requestAnimationFrame(() => overlay.classList.add('open'));
+
+            // Open with animation
+            requestAnimationFrame(() => {
+                overlay.classList.add('open');
+            });
         }
 
         function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('open');
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('open');
             document.body.style.overflow = '';
             currentModalId = null;
         }
@@ -3490,70 +2473,21 @@
                 div.style.opacity = '0';
                 div.style.transform = 'translateY(12px)';
                 div.dataset.index = index;
-                let displayHandle = item.handle;
-                if (item.icon !== 'fa-envelope') displayHandle = '@' + item.handle;
+                const isEmail = item.title === 'Email';
                 div.innerHTML = `
-              <div class="icon-wrap"><i class="fas ${item.icon} ${item.iconClass}"></i></div>
-              <span class="card-title">${item.title}</span>
-              <span class="card-handle">${displayHandle}</span>
-              <a href="${item.href}" ${item.icon === 'fa-envelope' ? '' : 'target="_blank" rel="noopener"'} class="social-btn ${item.btnClass}" aria-label="${item.aria}">
-                <i class="fas ${item.icon}"></i> ${item.action}
-              </a>
+              <div class="icon"><i class="fas ${item.icon}"></i></div>
+              <h3>${item.title}</h3>
+              <p class="handle">${item.handle}</p>
+              <a href="${item.href}" ${isEmail ? '' : 'target="_blank" rel="noopener"'} class="action-btn" aria-label="${item.aria}">${item.action}</a>
             `;
                 grid.appendChild(div);
             });
-            initContactCards();
-        }
-
-        function renderContactCardsStandalone() {
-            const grid = document.getElementById('contactGridStandalone');
-            if (!grid) return;
-            grid.innerHTML = '';
-            contactLinks.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'social-card';
-                div.style.opacity = '0';
-                div.style.transform = 'translateY(12px)';
-                div.dataset.index = index;
-                let displayHandle = item.handle;
-                if (item.icon !== 'fa-envelope') displayHandle = '@' + item.handle;
-                div.innerHTML = `
-              <div class="icon-wrap"><i class="fas ${item.icon} ${item.iconClass}"></i></div>
-              <span class="card-title">${item.title}</span>
-              <span class="card-handle">${displayHandle}</span>
-              <a href="${item.href}" ${item.icon === 'fa-envelope' ? '' : 'target="_blank" rel="noopener"'} class="social-btn ${item.btnClass}" aria-label="${item.aria}">
-                <i class="fas ${item.icon}"></i> ${item.action}
-              </a>
-            `;
-                grid.appendChild(div);
-            });
-            initContactCardsStandalone();
         }
 
         function initContactCards() {
             const cards = document.querySelectorAll('#contactGrid .social-card');
             if (!cards.length) return;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const idx = parseInt(el.dataset.index) || 0;
-                        const delay = idx * 0.06;
-                        setTimeout(() => {
-                            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0)';
-                        }, delay * 1000);
-                        observer.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.1 });
-            cards.forEach(card => observer.observe(card));
-        }
 
-        function initContactCardsStandalone() {
-            const cards = document.querySelectorAll('#contactGridStandalone .social-card');
-            if (!cards.length) return;
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -3569,6 +2503,7 @@
                     }
                 });
             }, { threshold: 0.1 });
+
             cards.forEach(card => observer.observe(card));
         }
 
@@ -3580,7 +2515,9 @@
 
         function initAboutObserver() {
             const section = document.getElementById('aboutSection');
-            if (!section || aboutAnimated) return;
+            if (!section) return;
+            if (aboutAnimated) return;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !aboutAnimated) {
@@ -3590,6 +2527,7 @@
                     }
                 });
             }, { threshold: 0.1 });
+
             observer.observe(section);
         }
 
@@ -3603,7 +2541,9 @@
                 setTimeout(() => {
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
-                    if (el.classList.contains('about-content')) el.classList.add('ink-visible');
+                    if (el.classList.contains('about-content')) {
+                        el.classList.add('ink-visible');
+                    }
                 }, delay * 1000 + 100);
             });
         }
@@ -3613,28 +2553,35 @@
         // ============================================================
 
         function initNavEvents() {
-            document.querySelectorAll('.logo-wrapper').forEach(el => {
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const route = this.dataset.route || 'home';
-                    navigateTo(route);
-                    closeMobileMenu();
-                });
-            });
+            // All route links
             document.querySelectorAll('[data-route]').forEach(el => {
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
                     const route = this.dataset.route;
-                    if (route) { navigateTo(route);
-                        closeMobileMenu(); }
+                    if (route) {
+                        navigateTo(route);
+                        closeMobileMenu();
+                    }
                 });
             });
-            document.getElementById('hamburgerBtn').addEventListener('click', toggleMobileMenu);
+
+            // Hamburger
+            document.getElementById('hamburgerBtn').addEventListener('click', function() {
+                toggleMobileMenu();
+            });
+
+            // Overlay close
             document.getElementById('mobileOverlay').addEventListener('click', closeMobileMenu);
+
+            // Mobile close button
             document.getElementById('mobileCloseBtn').addEventListener('click', closeMobileMenu);
+
+            // Hash change
             window.addEventListener('hashchange', function() {
                 const hash = window.location.hash.replace('#', '');
-                if (routes.includes(hash) && hash !== currentRoute) navigateTo(hash, false);
+                if (routes.includes(hash) && hash !== currentRoute) {
+                    navigateTo(hash, false);
+                }
             });
         }
 
@@ -3659,28 +2606,24 @@
         }
 
         // ============================================================
-        // ROUTE EVENTS
+        // ROUTE EVENTS (for page-specific init)
         // ============================================================
 
         function initRouteEvents() {
+            // Re-init when page becomes visible via nav
+            // We use a MutationObserver or just call on navigation
+            // For simplicity, we'll re-init on each navigation
             const origNavigate = navigateTo;
             navigateTo = function(route, pushState) {
                 origNavigate.call(this, route, pushState);
+                // Re-trigger page-specific animations after transition
                 setTimeout(() => {
                     if (route === 'home') {
                         if (!statsAnimated) initHomeStats();
-                        initHeroScroll();
-                        initScrollReveals();
-                        initContactStory();
-                        initContactBoat();
                     }
-                    if (route === 'myApp') { initProjectCards();
-                        initOceanScene(); }
-                    if (route === 'about') { initAboutObserver();
-                        initJourneyAnimations(); }
-                    if (route === 'contact') { initContactCardsStandalone();
-                        initContactStory();
-                        initContactBoat(); }
+                    if (route === 'myApp') { initProjectCards(); initOceanScene(); }
+                    if (route === 'about') { initAboutObserver(); initJourneyAnimations(); }
+                    if (route === 'contact') { initContactCards(); initContactStory(); }
                 }, 400);
             };
         }

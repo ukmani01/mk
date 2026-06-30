@@ -1,0 +1,382 @@
+CINEMATIC OCEAN STORY MODE (V2 — APPLE × PIXAR × AAA GAME QUALITY)
+ROLE
+
+You are a Creative Director, Apple Motion Designer, Unreal Engine Environment Artist, Three.js Expert, Award-Winning WebGL Engineer, and Awwwards Creative Developer.
+
+Your mission is NOT to build a normal portfolio.
+
+Your mission is to transform my portfolio into a cinematic storytelling experience.
+
+The visitor should feel like they are watching the opening scene of a premium movie.
+
+STORY
+
+The entire website represents my developer journey.
+
+The ocean represents endless learning.
+
+The small boat represents me.
+
+Every project is another destination reached.
+
+The final destination is getting hired.
+
+The Contact section represents a company discovering me.
+
+VISUAL QUALITY
+
+Do NOT use
+
+❌ Cartoon graphics
+
+❌ Flat SVG waves
+
+❌ Emoji
+
+❌ Generic illustrations
+
+Instead use
+
+✅ Real cinematic ocean
+
+✅ Real drone footage
+
+✅ Real boats
+
+✅ Real fish
+
+✅ Real clouds
+
+✅ Real sunlight
+
+✅ Real reflections
+
+Everything should feel like a luxury Apple product film.
+
+BACKGROUND
+
+Use FULL SCREEN VIDEO.
+
+Search and use FREE commercial videos.
+
+Priority
+
+Pexels
+
+Pixabay
+
+Mixkit
+
+Coverr
+
+Videvo
+
+Search keywords
+
+Luxury Ocean
+
+Calm Sea
+
+Sunrise Ocean
+
+White Waves
+
+Drone Ocean
+
+Luxury Yacht
+
+Boat Sailing
+
+Island Aerial
+
+Ocean Horizon
+
+Sea Reflection
+
+Golden Water
+
+Do NOT use blue-heavy tropical footage.
+
+Choose elegant silver-white water.
+
+WORK SECTION
+
+Instead of SVG waves,
+
+use
+
+Real ocean video
+
+with
+
+CSS blur
+
+brightness adjustment
+
+overlay gradients
+
+so text stays readable.
+
+THE BOAT
+
+Use
+
+Real boat PNG
+
+or
+
+Transparent boat image.
+
+The boat should gently move forever.
+
+Movement
+
+translateX
+
+translateY
+
+small rotation
+
+wind effect
+
+water floating
+
+The movement must be physics-like.
+
+PROJECT CARDS
+
+Cards should float naturally.
+
+When scrolling,
+
+the boat should pass near projects,
+
+making it feel like every project is an island discovered.
+
+Cards should rise slightly with the waves.
+
+Movement should be subtle.
+
+FISH
+
+Replace SVG fish.
+
+Use
+
+transparent PNG fish
+
+or
+
+small looping fish videos
+
+or
+
+WebGL fish particles.
+
+Fish should appear gradually.
+
+Small fish near top.
+
+Larger fish deeper.
+
+Maximum
+
+15
+
+for performance.
+
+ABOUT
+
+Replace flat background.
+
+Use
+
+luxury paper
+
+with
+
+real paper texture
+
+small shadow
+
+film grain
+
+subtle light movement.
+
+Headline should appear like ink drying.
+
+JOURNEY
+
+Instead of simple timeline,
+
+create
+
+real rope
+
+real anchor
+
+real shadow
+
+real metal texture.
+
+Anchor drops naturally.
+
+Small dust particles.
+
+Soft bounce.
+
+CONTACT
+
+This is the emotional climax.
+
+Use
+
+real ocean sunset
+
+real island
+
+real lighthouse
+
+real cargo ship
+
+real fishing boat
+
+real water reflections.
+
+The visitor should feel
+
+"I'm finally reaching my destination."
+
+CINEMATIC ENDING
+
+When Contact becomes visible,
+
+the ship slowly approaches.
+
+The boat receives warm light.
+
+Small birds appear.
+
+Sunlight becomes stronger.
+
+Ocean becomes calmer.
+
+This symbolizes opportunity.
+
+PARALLAX
+
+Create
+
+5 layers
+
+Sky
+
+Clouds
+
+Ocean
+
+Boat
+
+Foreground
+
+Each moves independently.
+
+GPU accelerated only.
+
+LIGHTING
+
+Dynamic sunlight.
+
+Soft reflections.
+
+Moving caustics.
+
+God rays.
+
+Real shadows.
+
+PARTICLES
+
+Very subtle.
+
+Dust
+
+Mist
+
+Ocean spray
+
+Floating pollen
+
+Tiny bubbles
+
+No heavy effects.
+
+SOUND (Optional)
+
+Muted ocean ambience.
+
+Small bird sounds.
+
+Disable by default.
+
+User can enable manually.
+
+PERFORMANCE
+
+Lighthouse
+
+95+
+
+Use
+
+IntersectionObserver
+
+requestAnimationFrame
+
+CSS transforms
+
+will-change
+
+Lazy loading
+
+Video optimization
+
+Responsive loading
+
+Mobile optimization
+
+RESPONSIVE
+
+Desktop
+
+Laptop
+
+Tablet
+
+Mobile
+
+Different video sources.
+
+Different image sizes.
+
+ACCESSIBILITY
+
+Respect
+
+prefers-reduced-motion
+
+Automatically replace videos with static images.
+
+FINAL EXPERIENCE
+
+When users open the website they should think:
+
+"This doesn't feel like a portfolio. It feels like the opening scene of a premium movie."
+
+It should combine:
+
+40% Apple
+20% Pixar-quality storytelling
+20% Awwwards interaction
+10% Luxury documentary cinematography
+10% AAA game environment design
